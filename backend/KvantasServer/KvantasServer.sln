@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32014.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KvantasServer", "KvantasServer\KvantasServer.csproj", "{A31D97FE-343A-4F90-AC7A-C235539B0686}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A31D97FE-343A-4F90-AC7A-C235539B0686}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A31D97FE-343A-4F90-AC7A-C235539B0686}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A31D97FE-343A-4F90-AC7A-C235539B0686}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A31D97FE-343A-4F90-AC7A-C235539B0686}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5C039D0B-1905-4E7B-9043-0B945758AA02}
+	EndGlobalSection
+EndGlobal
