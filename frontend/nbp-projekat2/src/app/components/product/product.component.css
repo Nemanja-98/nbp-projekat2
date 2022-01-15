@@ -1,0 +1,24 @@
+.content {
+    padding: 16px;
+    justify-content: flex-start;
+}
+
+.content > mat-card {
+    width: 200px;
+}
+img{
+    height: 100px;
+    width: 100px;
+    align-self: center;
+    padding-left: 40px;
+}
+
+.btnBuy{
+    background-color: #6677da !important;
+    color: white;
+}
+
+.btnSell{
+    background-color: #ff4081 !important;
+    color: white;
+}

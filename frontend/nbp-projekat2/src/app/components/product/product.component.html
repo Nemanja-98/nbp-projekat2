@@ -1,0 +1,22 @@
+<div *ngIf="productInfo">
+<mat-toolbar color="primary">
+    {{productInfo.name}}
+  </mat-toolbar>
+  <div class="content">
+    <mat-card class="mat-elevation-z4">
+      <mat-card-header>
+        <mat-card-title>Himalayan Peaks {{productInfo.type}}</mat-card-title>
+      </mat-card-header>
+      <img mat-card-image src="../../../assets/{{productInfo.name}}.jpg">
+      <mat-card-content>
+        <p>
+          {{productInfo.description}}
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-flat-button color="primary" class="btnBuy">BUY</button>
+        <button mat-button class="btnSell">SELL</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
