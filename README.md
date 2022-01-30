@@ -2,4 +2,4 @@
 
 ## Docker start command for neo4j
 
-	docker run -p 7474:7474 -p 7687:7687 -e NEO4J_AUTH=none -d neo4j --name KvantasDb
+	docker run -p 7474:7474 -p 7687:7687 -e NEO4J_AUTH=none -d --name KvantasDb neo4j
