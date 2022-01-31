@@ -31,9 +31,9 @@ namespace KvantasServer.Data
             }
         }
 
-        public IUserRepository UserRepository { get => _userRepo ??= new UserRepository(_neo4j); }
+        public IUserRepository UserRepository { get => _userRepo ??= new UserRepository(_neo4j, this); }
 
-        public ICategoryRepository CategoryRepository { get => _categoryRepo ??= new CategoryRepository(_neo4j); }
+        public ICategoryRepository CategoryRepository { get => _categoryRepo ??= new CategoryRepository(_neo4j, this); }
 
         public IProductRepository ProductRepository { get => _productRepo ??= new ProductRepository(_neo4j, this); }
     }

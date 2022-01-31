@@ -4,7 +4,7 @@
     {
         public Task<User> GetUser(string username);
         public Task AddUser(User user);
-        public Task<User> UpdateAsync(User user);
+        public Task<User> UpdateUser(User user);
         public Task DeleteUser(string username);
     }
 }

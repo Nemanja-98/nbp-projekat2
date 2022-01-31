@@ -8,11 +8,14 @@
 
         public int Amount { get; set; }
 
+        public int Price { get; set; }
+
         public override string ToString()
         {
             return $"{{ {nameof(Name)}: \"{Name}\", " +
                 $"{nameof(Category)}: \"{Category}\", " +
-                $"{nameof(Amount)}: {Amount} }}";
+                $"{nameof(Amount)}: \"{Amount}\", " +
+                $"{nameof(Price)}: {Price} }}";
         }
     }
 }

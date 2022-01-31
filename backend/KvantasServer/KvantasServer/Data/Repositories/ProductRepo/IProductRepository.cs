@@ -2,9 +2,9 @@
 {
     public interface IProductRepository
     {
-        Task<List<Product>> GetAllProducts();
+        Task<List<ProductGetDto>> GetAllProducts();
         Task AddProduct(ProductPostDto dto);
-        Task<Product> UpdateProduct(ProductPostDto dto);
+        Task<ProductGetDto> UpdateProduct(ProductPostDto dto);
         Task DeleteProduct(string username, string categoryName, string productName);
     }
 }

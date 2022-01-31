@@ -1,4 +1,5 @@
 ﻿namespace KvantasServer.Records
 {
-    public record ProductPostDto(string Username, Product Product);
+    public record ProductPostDto(string Owner, Product Product);
+    public record ProductGetDto(string Name, string Category, int Amount, int Price, string Owner);
 }
