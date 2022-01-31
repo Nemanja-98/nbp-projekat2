@@ -38,5 +38,33 @@ namespace KvantasServer.Controllers
                 return StatusCode(ex.Status, ex.Message);
             }
         }
+
+        [HttpPut("UpdateUser")]
+        public async Task<ActionResult<User>> UpdateUser([FromBody]User user)
+        {
+            try
+            {
+                await _unitOfWork.UserRepository.UpdateUser(user);
+                return Ok("User updated");
+            }
+            catch (ResponseException ex)
+            {
+                return StatusCode(ex.Status, ex.Message);
+            }
+        }
+
+        [HttpDelete("DeleteUser/{username}")]
+        public async Task<ActionResult> DeleteUser([FromRoute]string username)
+        {
+            try
+            {
+                await _unitOfWork.UserRepository.DeleteUser(username);
+                return Ok("User deleted");
+            }
+            catch (ResponseException ex)
+            {
+                return StatusCode(ex.Status, ex.Message);
+            }
+        }
     }
 }
