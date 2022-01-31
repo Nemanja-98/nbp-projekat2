@@ -22,9 +22,14 @@ export class ProductComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed', result);
-      if(this.productInfo)
-        this.productInfo.amount = String(Number(this.productInfo.amount) - Number(result));
+      if(typeof(result) === "number"){
+        // console.log('The dialog was closed', result);
+        if(this.productInfo)
+          if((this.productInfo.amount - result) >= 0)
+            this.productInfo.amount = this.productInfo.amount - result;
+          else
+            alert("You have entered a quantity greater than the maximum offered. Please try again.");
+      }
     });
   }
 
@@ -45,18 +50,21 @@ export interface DialogData {
   styleUrls: ['./product.component.css']
 })
 export class ProductDialog {
-  public selectedAmount : any = 0;
+  selectedAmount : number = 0;
   constructor(
     public dialogRef: MatDialogRef<ProductDialog>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
   ) {}
 
+
+
   onConfirmClicked(){
     console.log("is",this.selectedAmount);
+    this.dialogRef.close(this.selectedAmount);
   }
 
   onNoClick(): void {
-    this.dialogRef.close();
+    this.dialogRef.close("cancel");
   }
 
   validate(evt :any) {
@@ -69,13 +77,17 @@ export class ProductDialog {
         var key = theEvent.keyCode || theEvent.which;
         key = String.fromCharCode(key);
     }
+    // console.log(key)
+    // if(key === "46")
+    // console.log(key)
+    //   // this.selectedAmount = this.selectedAmount / 10
     var regex = /[0-9]|\./;
     if( !regex.test(key) ) {
       theEvent.returnValue = false;
       if(theEvent.preventDefault) theEvent.preventDefault();
     }
-    this.selectedAmount = Number(evt.target.innerHTML); 
     const input = document.querySelector('input')?.innerHTML;
-    console.log(Number(evt.target.innerHTML),key, input);
+    this.selectedAmount = (this.selectedAmount*10) + Number(key); 
+    console.log(this.selectedAmount, key, input);
   }
 }

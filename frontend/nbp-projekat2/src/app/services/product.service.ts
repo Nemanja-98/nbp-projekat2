@@ -13,31 +13,31 @@ export class ProductService {
       {
         name: "himalajska jabuka",
         type: "apple",
-        amount: 20000 + " kg",
+        amount: 20000,
         owner: "dragan"
       },
       {
         name: "babusnicka kruska",
         type: "pear",
-        amount: 20000 + " kg",
+        amount: 20000,
         owner: "milan"
       },
       {
         name: "lagani persisjski kruska",
         type: "pear",
-        amount: 20000 + " kg",
+        amount: 20000,
         owner: "jelena"
       },
       {
         name: "indonezija jabuka",
         type: "apple",
-        amount: 20000 + " kg",
+        amount: 20000,
         owner: "momir"
       },
       {
         name: "jagoda u supermarketu",
         type: "strawberry",
-        amount: 20000 + " kg",
+        amount: 20000,
         owner: "dragica"
       },
     ]
