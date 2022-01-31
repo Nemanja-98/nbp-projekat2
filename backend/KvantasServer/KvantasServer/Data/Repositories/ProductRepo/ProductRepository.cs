@@ -49,6 +49,14 @@ namespace KvantasServer.Data.Repositories.ProductRepo
                 .Where((User dbUser, Product dbProduct) => dbUser.Username == username && dbProduct.Name == productName && dbProduct.Category == categoryName)
                 .DetachDelete($"{KeyConsts.ProductVar}")
                 .ExecuteWithoutResultsAsync();
+
+            var neoCategoryProducts = (await _neo4j.Cypher.Match($"({KeyConsts.UserKey})-[:{LinkConsts.CategoryLink}]->()-[:{LinkConsts.TypeLink}]->({KeyConsts.ProductVar})")
+                .Where((User dbUser, Product dbProduct) => dbUser.Username == username && dbProduct.Category == categoryName && dbProduct.Name == categoryName)
+                .Return((dbUser, dbProduct) => new { Product = dbProduct.As<Product>() })
+                .ResultsAsync).ToList();
+
+            if (neoCategoryProducts.Count == 0)
+                await _unitOfWork.CategoryRepository.DeleteCategory(username, categoryName);
         }
 
         public async Task<List<ProductGetDto>> GetAllProducts()
@@ -85,17 +93,15 @@ namespace KvantasServer.Data.Repositories.ProductRepo
             neoProduct.ProductToUpdate.Amount = dto.Product.Amount == 0 ? neoProduct.ProductToUpdate.Amount : dto.Product.Amount;
             neoProduct.ProductToUpdate.Price = dto.Product.Price == 0 ? neoProduct.ProductToUpdate.Price : dto.Product.Price;
 
-            await _neo4j.Cypher.Match($"({KeyConsts.UserKey})-[:{LinkConsts.CategoryLink}]->()-[:{LinkConsts.TypeLink}]->({KeyConsts.ProductVar})")
-                .Where((User dbUser, Product dbProduct) => dbUser.Username == dto.Owner && dbProduct.Name == dto.Product.Name && dbProduct.Category == dto.Product.Category)
-                .Set($"{KeyConsts.ProductVar} = {neoProduct.ProductToUpdate.ToString()}")
-                .ExecuteWithoutResultsAsync();
+            if (neoProduct.ProductToUpdate.Amount != 0)
+                await _neo4j.Cypher.Match($"({KeyConsts.UserKey})-[:{LinkConsts.CategoryLink}]->()-[:{LinkConsts.TypeLink}]->({KeyConsts.ProductVar})")
+                    .Where((User dbUser, Product dbProduct) => dbUser.Username == dto.Owner && dbProduct.Name == dto.Product.Name && dbProduct.Category == dto.Product.Category)
+                    .Set($"{KeyConsts.ProductVar} = {neoProduct.ProductToUpdate.ToString()}")
+                    .ExecuteWithoutResultsAsync();
+            else
+                await DeleteProduct(neoProduct.User.Username, neoProduct.ProductToUpdate.Category, neoProduct.ProductToUpdate.Name);
 
             return new ProductGetDto(neoProduct.ProductToUpdate.Name, neoProduct.ProductToUpdate.Category, neoProduct.ProductToUpdate.Amount, neoProduct.ProductToUpdate.Price, fullNameBuilder(neoProduct.User));
-        }
-
-        private ProductGetDto ProductGetDtoBuilder(Product prod, User user)
-        {
-            return new ProductGetDto(prod.Name, prod.Category, prod.Amount, prod.Price, fullNameBuilder(user));
         }
     }
 }
