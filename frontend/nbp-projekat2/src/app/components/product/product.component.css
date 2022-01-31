@@ -17,3 +17,50 @@ img{
     background-color: #6677da !important;
     color: white;
 }
+
+.divDialogActions{
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    margin: 40px 0px 0px 0px;
+}
+
+
+.labelKilograms{
+    /* float: right; */
+    position: relative;
+    right: 100px;
+}
+input{
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    border-radius: 8px;
+    color: black;
+    text-align: center;
+}
+
+.divInputAmount{
+    justify-content: center;
+    display: flex;
+}
+
+.divContent{
+    text-align: center;
+}
+h1{
+    width: 10%;
+    margin: auto;
+}
+
+.btnCancel, .btnConfirm{
+    color: black;
+    border-radius: 8px;
+}
+.btnConfirm{
+    background-color: chartreuse;
+}
+.btnCancel{
+    
+    background-color: crimson;
+}
