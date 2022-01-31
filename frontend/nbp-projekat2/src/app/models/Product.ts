@@ -1,10 +1,12 @@
 export class Product {
     name: string;
     type: string;
-    description :string;
-    constructor(name :string, type :string, description :string) {
+    amount :string;
+    owner: string;
+    constructor(name :string, type :string, amount :string, owner: string) {
         this.name = name;
         this.type = type;
-        this.description = description;
+        this.amount = amount;
+        this.owner = owner;
     }
 }

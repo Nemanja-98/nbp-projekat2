@@ -1,34 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
 import { Product } from 'src/app/models/Product';
+import { ProductService } from 'src/app/services/product.service';
 
 
-const mockProductList : Array<Product> = [ 
-  {
-    name: "apple",
-    type: "non-GMO red apple",
-    description: "home grown pesticide free apple",
-  },
-  {
-    name: "pear",
-    type: "non-GMO yellow Pear",
-    description: "home grown pesticide free Pear",
-  },
-  {
-    name: "A.Pineapple",
-    type: "A.PineApple",
-    description: "Natural African PineApple",
-  },
-  {
-    name: "PineApple",
-    type: "Peruan PineApple",
-    description: "Latino-America grown PineApple",
-  },
-  {
-    name: "strawberry",
-    type: "non-GMO red Strawberry",
-    description: "home grown pesticide free Strawberry",
-  },
-]
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
@@ -36,9 +11,35 @@ const mockProductList : Array<Product> = [
 })
 export class ProductListComponent implements OnInit {
 
-  constructor() { }
-  public productList = mockProductList;
-  ngOnInit(): void {
+  productList: Product[] = [];
+  allProducts: Product[] = [];
+  @Input() selectedFilters: string[] = [];
+
+  constructor(private productService: ProductService) { }
+  
+  ngOnChanges(){
+    this.updateFilters();
   }
 
+  ngOnInit(): void {
+   this.allProducts = this.productService.getAllProducts();
+   this.productList = this.allProducts;
+  }
+
+  updateFilters() {
+    if(this.selectedFilters.length === 0)
+    {
+      this.productList = this.allProducts
+    }
+    else
+    {
+      this.productList = [];
+      this.selectedFilters.map( (x: string) => {
+        this.allProducts.map( (y: Product) => {
+          if( y.type === x )
+            this.productList.push(y)
+        })
+      })
+    }
+  }
 }

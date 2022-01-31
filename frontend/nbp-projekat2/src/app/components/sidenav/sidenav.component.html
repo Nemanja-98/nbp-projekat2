@@ -1,0 +1,8 @@
+<div class="parent">
+    <h4>
+        Category
+    </h4>
+    <div [ngClass]="'checkboxes'">
+        <mat-checkbox (click)="toggleFilterCategory($event)" *ngFor="let category of categories" name="{{category}}">{{category}}</mat-checkbox>
+    </div>
+</div>
