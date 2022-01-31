@@ -1,0 +1,14 @@
+.parent{
+    display: flex;
+    float: left;
+    height: 100vh;
+    border: 1px solid black;
+    flex-direction: column;
+    align-items: center;
+    min-width: 200px;
+}
+
+.checkboxes{
+    display: flex;
+    flex-direction: column;
+}
