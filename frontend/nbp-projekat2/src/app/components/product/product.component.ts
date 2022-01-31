@@ -45,13 +45,14 @@ export interface DialogData {
   styleUrls: ['./product.component.css']
 })
 export class ProductDialog {
+  public selectedAmount : any = 0;
   constructor(
     public dialogRef: MatDialogRef<ProductDialog>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
   ) {}
 
   onConfirmClicked(){
-
+    console.log("is",this.selectedAmount);
   }
 
   onNoClick(): void {
@@ -73,5 +74,8 @@ export class ProductDialog {
       theEvent.returnValue = false;
       if(theEvent.preventDefault) theEvent.preventDefault();
     }
+    this.selectedAmount = Number(evt.target.innerHTML); 
+    const input = document.querySelector('input')?.innerHTML;
+    console.log(Number(evt.target.innerHTML),key, input);
   }
 }
