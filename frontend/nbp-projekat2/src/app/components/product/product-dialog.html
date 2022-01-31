@@ -1,0 +1,13 @@
+<h1 mat-dialog-title>Hi</h1>
+<div mat-dialog-content class="divContent">
+  <p>How much would you like to order?</p>
+  <p>Available amount: {{data.amount}}</p>
+  <div class="divInputAmount">
+    <input type='text' (keypress)="validate($event)" placeholder="1000">
+    <label class="labelKilograms">kg</label>
+  </div>
+</div>
+<div mat-dialog-actions class="divDialogActions">
+  <button class="btnCancel"  (click)="onNoClick()">Cancel</button>
+  <button class="btnConfirm"  cdkFocusInitial (click)="onConfirmClicked()">Confirm</button>
+</div>
