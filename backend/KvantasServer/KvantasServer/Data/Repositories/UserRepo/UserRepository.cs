@@ -41,6 +41,14 @@ namespace KvantasServer.Data.Repositories.UserRepo
             foreach (var neoCategory in neoConnectedCategories)
                 await _unitOfWork.CategoryRepository.DeleteCategory(username, neoCategory.CategoryToDelete.Name);
 
+            var neoConnectedInvoices = (await _neo4j.Cypher.Match($"({KeyConsts.UserKey})-[:{LinkConsts.InvoiceLink}]->({KeyConsts.InvoiceVar})")
+                .Where((User dbUser) => dbUser.Username == username)
+                .Return((dbInvoice) => new { Invoice = dbInvoice.As<Invoice>() })
+                .ResultsAsync).ToList();
+
+            foreach (var neoInvoice in neoConnectedInvoices)
+                await _unitOfWork.InvoiceRepository.DeleteInvoice(username, neoInvoice.Invoice.BuyerName, neoInvoice.Invoice.ProductName);
+
             await _neo4j.Cypher.Match($"({KeyConsts.UserKey})")
                 .Where((User dbUser) => dbUser.Username == username)
                 .DetachDelete($"{KeyConsts.UserVar}")

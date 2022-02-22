@@ -1,10 +1,8 @@
-﻿using KvantasServer.Constants;
-using Neo4jClient;
-using System.Text.Json;
-using KvantasServer.Records;
+﻿using Neo4jClient;
 using KvantasServer.Data.Repositories.UserRepo;
 using KvantasServer.Data.Repositories.CategoryRepo;
 using KvantasServer.Data.Repositories.ProductRepo;
+using KvantasServer.Data.Repositories.InvoiceRepo;
 
 namespace KvantasServer.Data
 {
@@ -16,6 +14,7 @@ namespace KvantasServer.Data
         private IUserRepository _userRepo;
         private ICategoryRepository _categoryRepo;
         private IProductRepository _productRepo;
+        private IInvoiceRepository _invoiceRepository;
 
         public UnitOfWork(ILogger<UnitOfWork> log)
         {
@@ -36,5 +35,7 @@ namespace KvantasServer.Data
         public ICategoryRepository CategoryRepository { get => _categoryRepo ??= new CategoryRepository(_neo4j, this); }
 
         public IProductRepository ProductRepository { get => _productRepo ??= new ProductRepository(_neo4j, this); }
+
+        public IInvoiceRepository InvoiceRepository { get => _invoiceRepository ??= new InvoiceRepository(_neo4j); }
     }
 }

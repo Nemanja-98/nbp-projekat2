@@ -4,5 +4,6 @@
     {
         public const string CategoryLink = "CategoryLink";
         public const string TypeLink = "TypeLink";
+        public const string InvoiceLink = "InvoiceLink";
     }
 }
