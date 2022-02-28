@@ -1,46 +1,25 @@
 import { Injectable } from '@angular/core';
 import { Product } from '../models/Product';
+import { HttpClient, HttpHeaders } from '@angular/common/http'
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
 
-  constructor() { }
+  url:string = environment.connectionString + "Product/";
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+      'Allow': '*'
+    })
+  }
+
+  constructor(private http: HttpClient) { }
 
   getAllProducts() {
-    const mockProductList : Array<Product> = [ 
-      {
-        name: "himalajska jabuka",
-        type: "apple",
-        amount: 20000,
-        owner: "dragan"
-      },
-      {
-        name: "babusnicka kruska",
-        type: "pear",
-        amount: 20000,
-        owner: "milan"
-      },
-      {
-        name: "lagani persisjski kruska",
-        type: "pear",
-        amount: 20000,
-        owner: "jelena"
-      },
-      {
-        name: "indonezija jabuka",
-        type: "apple",
-        amount: 20000,
-        owner: "momir"
-      },
-      {
-        name: "jagoda u supermarketu",
-        type: "strawberry",
-        amount: 20000,
-        owner: "dragica"
-      },
-    ]
-    return mockProductList
+    return this.http.get<Product[]>(this.url + "GetAllProducts", this.httpOptions)
   }
 }

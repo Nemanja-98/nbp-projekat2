@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
 import { Product } from 'src/app/models/Product';
 import { ProductService } from 'src/app/services/product.service';
 
@@ -22,8 +21,11 @@ export class ProductListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-   this.allProducts = this.productService.getAllProducts();
-   this.productList = this.allProducts;
+   this.productService.getAllProducts().subscribe( response => {
+     this.allProducts = response
+     console.log(this.allProducts)
+     this.productList = this.allProducts;
+   });
   }
 
   updateFilters() {
@@ -36,7 +38,7 @@ export class ProductListComponent implements OnInit {
       this.productList = [];
       this.selectedFilters.map( (x: string) => {
         this.allProducts.map( (y: Product) => {
-          if( y.type === x )
+          if( y.category === x )
             this.productList.push(y)
         })
       })
