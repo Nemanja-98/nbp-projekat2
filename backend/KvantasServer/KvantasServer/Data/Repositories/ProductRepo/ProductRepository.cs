@@ -68,7 +68,7 @@ namespace KvantasServer.Data.Repositories.ProductRepo
                 .ResultsAsync).ToList();
 
             foreach (var prod in neoResult)
-                result.Add(new ProductGetDto(prod.Product.Name, prod.Product.Category, prod.Product.Amount, prod.Product.Price, fullNameBuilder(prod.User)));
+                result.Add(new ProductGetDto(prod.Product.Name, prod.Product.Category, prod.Product.Amount, prod.Product.Price, fullNameBuilder(prod.User), prod.User.Username));
 
             return result;
         }
@@ -101,7 +101,7 @@ namespace KvantasServer.Data.Repositories.ProductRepo
             else
                 await DeleteProduct(neoProduct.User.Username, neoProduct.ProductToUpdate.Category, neoProduct.ProductToUpdate.Name);
 
-            return new ProductGetDto(neoProduct.ProductToUpdate.Name, neoProduct.ProductToUpdate.Category, neoProduct.ProductToUpdate.Amount, neoProduct.ProductToUpdate.Price, fullNameBuilder(neoProduct.User));
+            return new ProductGetDto(neoProduct.ProductToUpdate.Name, neoProduct.ProductToUpdate.Category, neoProduct.ProductToUpdate.Amount, neoProduct.ProductToUpdate.Price, fullNameBuilder(neoProduct.User), neoProduct.User.Username);
         }
     }
 }
