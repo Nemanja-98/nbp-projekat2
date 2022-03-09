@@ -1,66 +1,69 @@
 .content {
-    padding: 16px;
-    justify-content: flex-start;
+  padding: 16px;
+  justify-content: flex-start;
 }
 
 .content > mat-card {
-    width: 200px;
+  width: 200px;
 }
-img{
-    height: 100px;
-    width: 100px;
-    align-self: center;
-    padding-left: 40px;
-}
-
-.btnBuy{
-    background-color: #6677da !important;
-    color: white;
+img {
+  height: 100px;
+  width: 100px;
+  align-self: center;
+  padding-left: 40px;
 }
 
-.divDialogActions{
-    display: flex;
-    justify-content: space-evenly;
-    flex-direction: row;
-    margin: 40px 0px 0px 0px;
+.btnBuy {
+  background-color: #6677da !important;
+  color: white;
 }
 
-
-.labelKilograms{
-    /* float: right; */
-    position: relative;
-    right: 100px;
-}
-input{
-    display: flex;
-    flex-direction: row;
-    margin: auto;
-    border-radius: 8px;
-    color: black;
-    text-align: center;
+.divDialogActions {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: row;
+  margin: 40px 0px 0px 0px;
 }
 
-.divInputAmount{
-    justify-content: center;
-    display: flex;
+.labelKilograms {
+  /* float: right; */
+  position: relative;
+  right: 100px;
+}
+input {
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+  border-radius: 8px;
+  color: black;
+  text-align: center;
 }
 
-.divContent{
-    text-align: center;
-}
-h1{
-    width: 10%;
-    margin: auto;
+.divInputAmount {
+  justify-content: center;
+  display: flex;
 }
 
-.btnCancel, .btnConfirm{
-    color: black;
-    border-radius: 8px;
+.divContent {
+  text-align: center;
 }
-.btnConfirm{
-    background-color: chartreuse;
+h1 {
+  width: 10%;
+  margin: auto;
 }
-.btnCancel{
-    
-    background-color: crimson;
+
+.btnCancel,
+.btnConfirm {
+  color: black;
+  border-radius: 8px;
+}
+.btnConfirm {
+  background-color: chartreuse;
+}
+.btnCancel {
+  background-color: crimson;
+}
+
+.btnEdit {
+  float: right;
 }
