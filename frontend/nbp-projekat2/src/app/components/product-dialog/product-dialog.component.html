@@ -1,4 +1,5 @@
-<h2 mat-dialog-title [ngClass]="'center'">Naslov sorte koje narucuje</h2>
+<h2 mat-dialog-title [ngClass]="'center'">{{ data.product.name }}</h2>
+<h2 mat-dialog-title [ngClass]="'center'">Available amount: {{ data.product.amount }}kg</h2>
 <mat-dialog-content [ngClass]="'center'">
   <div [ngClass]="'space'">
     <label>Please insert your full name bellow</label>
@@ -14,11 +15,11 @@
   </div>
   <div [ngClass]="'space'">
     <label>Please insert the amount you want to order bellow</label>
-    <input matInput type="number" min="1" [max]="data.amount" [(ngModel)]="amount">
+    <input matInput type="number" min="1" [max]="data.product.amount" [(ngModel)]="amount">
   </div>
-  <label [ngClass]="'space'">Full price: euros</label>
+  <label [ngClass]="'space'">Full price: {{ this.amount * data.product.price }} euros</label>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-button mat-dialog-close cdkFocusInitial [ngClass]="'btnGreen'" (click)="placeInovice()">Confirm</button>
+  <button mat-button cdkFocusInitial [ngClass]="'btnGreen'" (click)="placeInovice()">Confirm</button>
 </mat-dialog-actions>

@@ -1,0 +1,10 @@
+<div class="parent">
+    <div class="side">
+        <button mat-raised-button class="buttons">My Informations</button>
+        <button mat-raised-button class="buttons" (click)="getMyInvoices()">My Invoices</button>
+        <button mat-raised-button class="buttons">My Products</button>
+    </div>
+    <div [hidden]="showInfo">My Informations</div>
+    <div [hidden]="showInvoices">My Invoices</div>
+    <div [hidden]="showProducts">My Products</div>
+</div>

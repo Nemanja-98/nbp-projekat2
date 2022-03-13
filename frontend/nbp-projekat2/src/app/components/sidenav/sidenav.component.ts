@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { MatCheckbox } from '@angular/material/checkbox';
 
 
 @Component({
@@ -19,15 +20,13 @@ export class SidenavComponent implements OnInit {
    
   }
 
-  toggleFilterCategory(event :any) {
-    const target: HTMLElement= event.target;
-    const checkbox :HTMLInputElement | null = target.querySelector('input');
-    if(!checkbox)
-      return;
-    const filterText :string = checkbox.name;
-    this.selectedFilters = this.selectedFilters.includes(filterText) ?
-                                                                      this.selectedFilters.filter( (filter : string) => filter != filterText) 
-                                                                      : [...this.selectedFilters, filterText];
+  toggleFilterCategory(chBox: MatCheckbox) {
+
+    const filterText :string = chBox.name ? chBox.name : ""
+    this.selectedFilters = this.selectedFilters
+                                .includes(filterText) ?
+                                                        this.selectedFilters.filter( (filter : string) => filter != filterText) 
+                                                      : [...this.selectedFilters, filterText];
     console.log(this.selectedFilters)
     this.selectedFilter.emit(this.selectedFilters)
   }

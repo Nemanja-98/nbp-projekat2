@@ -1,0 +1,14 @@
+.container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    background-color: green;
+    color: white;
+    padding: 5px;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}

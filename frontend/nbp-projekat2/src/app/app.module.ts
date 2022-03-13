@@ -1,13 +1,10 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
-
 //components imports 
 import { ProductComponent } from './components/product/product.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { StoreComponent } from './components/store/store.component';
 import { AppComponent } from './app.component';
 import { ProductDialogComponent } from './components/product-dialog/product-dialog.component';
+import { NavigationComponent } from './components/navigation/navigation.component';
 
 //module imports
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -20,6 +17,12 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDialogModule } from '@angular/material/dialog'; 
 import { FormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+import { AppRoutingModule } from './app-routing.module';
+import { ProfileComponent } from './components/profile/profile.component';
+
 
 
 @NgModule({
@@ -30,6 +33,8 @@ import { FormsModule } from '@angular/forms';
     SidenavComponent,
     StoreComponent,
     ProductDialogComponent,
+    NavigationComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,7 +47,8 @@ import { FormsModule } from '@angular/forms';
     MatCheckboxModule,
     MatDialogModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

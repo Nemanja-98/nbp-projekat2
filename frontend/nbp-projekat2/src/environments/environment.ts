@@ -1,10 +1,18 @@
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
+import { HttpClient, HttpHeaders } from '@angular/common/http'
 
 export const environment = {
   production: false,
-  connectionString: "https://localhost:7023/api/"
+  connectionString: "https://localhost:7023/api/",
+  httpOptions: {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+      'Allow': '*'
+    })
+  }
 };
 
 /*
