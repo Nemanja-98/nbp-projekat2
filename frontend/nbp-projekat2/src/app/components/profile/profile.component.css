@@ -8,11 +8,60 @@
     flex-direction: column;
     align-items: center;
     border: 1px solid black;
-    width: 200px;
+    min-width: 200px;
 }
 
 .buttons{
     margin: 5px;
-    background-color: green;
+    background-color: #006CD0;
     color: white;
+}
+
+.informations{
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    font-size: large;
+}
+
+.center{
+    width: 100%;
+}
+
+.invoices{
+    display: flex;
+    flex-grow: 1;
+    margin: 10px;
+}
+
+.vertical{
+    display: flex;
+    flex-direction: column;
+    font-size: large;
+}
+
+.hide{
+    display: none;
+}
+
+.margins{
+    margin: 10px;
+}
+
+.wideButton {
+    width: 100%;
+}
+
+.grayBtn {
+    background-color: gray;
+    color: white;
+}
+
+.marginTop {
+    margin-top: 10px;
+}
+
+.prod {
+    display: flex;
+    flex-wrap: wrap;
 }

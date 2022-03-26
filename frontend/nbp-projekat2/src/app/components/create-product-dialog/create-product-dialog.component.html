@@ -1,0 +1,23 @@
+<div>
+    <h2 mat-dialog-title>Create product</h2>
+    <mat-dialog-content>
+        <div class="divFlexColumn">
+            <label class="marginTen">Name: <input matInput type="text" [(ngModel)]="productForCreation.name"></label>
+            <label class="marginTen">Category: 
+                    <mat-radio-group aria-label="Select an option" [(ngModel)]="category">
+                        <div class="divFlexColumn">
+                        <mat-radio-button value="apple">Apple</mat-radio-button>
+                        <mat-radio-button value="pear">Pear</mat-radio-button>
+                        <mat-radio-button value="strawberry">Strawberry</mat-radio-button>
+                    </div>
+                  </mat-radio-group>
+            </label>
+            <label class="marginTen">Amount: <input matInput type="number" min="0" [(ngModel)]="productForCreation.amount"></label>
+            <label class="marginTen">Price: <input matInput type="number" min="0" [(ngModel)]="productForCreation.price"></label>
+        </div>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+        <button mat-raised-button mat-dialog-close>Cancel</button>
+        <button mat-raised-button color="primary" (click)="addProduct()">Add</button>
+    </mat-dialog-actions>
+</div>

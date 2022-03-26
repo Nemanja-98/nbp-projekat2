@@ -13,9 +13,13 @@ img {
   padding-left: 40px;
 }
 
-.btnBuy {
-  background-color: #6677da !important;
-  color: white;
+.btnEdit {
+  background-color: yellow;
+  color: black;
+}
+
+.btns {
+  display: flex;
 }
 
 .divDialogActions {
@@ -62,8 +66,4 @@ h1 {
 }
 .btnCancel {
   background-color: crimson;
-}
-
-.btnEdit {
-  float: right;
 }

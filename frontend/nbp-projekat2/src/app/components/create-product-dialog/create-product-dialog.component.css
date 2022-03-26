@@ -1,0 +1,8 @@
+.divFlexColumn {
+    display: flex;
+    flex-direction: column;
+}
+
+.marginTen {
+    margin: 10px;
+}

@@ -1,0 +1,17 @@
+.editProduct {
+    display: flex;
+    flex-direction: column;
+}
+
+.editSelect {
+   display: flex;
+}
+
+.marginTen {
+    margin: 10px;
+}
+
+.marginTenLeft {
+    margin-left: 10px;
+    border: 1px solid black;
+}

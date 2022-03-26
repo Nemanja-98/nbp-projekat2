@@ -1,10 +1,57 @@
 <div class="parent">
     <div class="side">
-        <button mat-raised-button class="buttons">My Informations</button>
-        <button mat-raised-button class="buttons" (click)="getMyInvoices()">My Invoices</button>
-        <button mat-raised-button class="buttons">My Products</button>
+        <h3>Profile</h3>
+        <button mat-raised-button class="buttons" (click)="showMyInformations()">My Informations</button>
+        <button mat-raised-button class="buttons" (click)="showMyInvoices()">My Invoices</button>
+        <button mat-raised-button class="buttons" (click)="showMyProducts()">My Products</button>
     </div>
-    <div [hidden]="showInfo">My Informations</div>
-    <div [hidden]="showInvoices">My Invoices</div>
-    <div [hidden]="showProducts">My Products</div>
+    <div class="center">
+        <div [ngClass] = "{'informations': true, 'hide': showInfo}">
+            <h1>Username: {{ myInformations.username }}</h1>
+            <h1>Name: 
+                <label [hidden]="!updateUserFlag">{{ myInformations.name }}</label>
+                <input [hidden]="updateUserFlag" matInput type="text" [(ngModel)]="userForUpdate.name">
+            </h1>
+            <h1>Surname: 
+                <label [hidden]="!updateUserFlag">{{ myInformations.surname }}</label>
+                <input [hidden]="updateUserFlag" matInput type="text" [(ngModel)]="userForUpdate.surname">
+            </h1>
+            <h1>Location: 
+                <label [hidden]="!updateUserFlag">{{ myInformations.location }}</label>
+                <input [hidden]="updateUserFlag" matInput type="text" [(ngModel)]="userForUpdate.location">
+            </h1>
+            <div [hidden]="!updateUserFlag">
+                <button mat-raised-button class="marginTop wideButton" color="accent" (click)="turnOnUserForUpdate()">Edit</button>
+            </div>
+            <div  [hidden]="updateUserFlag">
+                <button class="wideButton marginTop" mat-raised-button color="primary" (click)="updateUser()">Update</button>
+            </div>
+            <div  [hidden]="updateUserFlag">
+                <button class="wideButton grayBtn marginTop" mat-raised-button color="basic" (click)="cancelUpdateUser()">Cancel</button>
+            </div>
+            <!-- Stali smo do ove forme z upedjtovanje usera, poso je da napravis da inputi lepo izgledaju i da napises
+            update metodu u TS i service i da napravis dugme za Odustani -->
+        </div>
+        <div [ngClass] = "{'invoices': true, 'hide': showInvoices}">
+            <mat-card *ngFor="let invoice of myInvoices" class="margins">
+                <mat-card-title>Product: {{ invoice.productName }}</mat-card-title>
+                <mat-card-content class="vertical">
+                    <label>Buyer name: {{ invoice.buyerName }}</label>
+                    <label>Phone number: {{ invoice.phoneNumber }}</label>
+                    <label>Address: {{ invoice.address }}</label>
+                    <label>Amount: {{ invoice.amount }}</label>
+                    <label>Product price: {{ invoice.productPrice }} eur</label>
+                    <label>Total amount {{ invoice.amount * invoice.productPrice }} eur</label>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button mat-raised-button color="primary" (click)="openDialog(invoice)">Check out</button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+        <div [ngClass] = "{'prod': !showProducts,'hide': showProducts}">
+            <div *ngFor="let product of myProducts">
+                <app-product [productInfo]="product"></app-product>
+            </div>
+        </div>
+    </div>
 </div>

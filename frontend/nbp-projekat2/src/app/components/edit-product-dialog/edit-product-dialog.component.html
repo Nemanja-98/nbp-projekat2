@@ -1,0 +1,11 @@
+<div>
+    <h2 mat-dialog-title>{{ data.product.name }}</h2>
+    <mat-dialog-content class="editProduct">
+        <label class="marginTen">Amount: <input matInput type="number" min="1" [(ngModel)]="productForUpdate.amount"></label>
+        <label class="marginTen">Price: <input matInput type="number" [(ngModel)]="productForUpdate.price"></label>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+        <button mat-raised-button mat-dialog-close>Cancel</button>
+        <button mat-raised-button color="primary" (click)="editProduct()">Update</button>
+    </mat-dialog-actions>
+</div>

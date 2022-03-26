@@ -2,6 +2,8 @@ import { Component, Inject, Input, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, } from '@angular/material/dialog';
 import { Product } from 'src/app/models/Product';
 import { ProductDialogComponent } from '../product-dialog/product-dialog.component';
+import { EditProductDialogComponent } from '../edit-product-dialog/edit-product-dialog.component';
+import { DeleteProductDialogComponent } from '../delete-product-dialog/delete-product-dialog.component';
 
 @Component({
   selector: 'app-product',
@@ -20,11 +22,21 @@ export class ProductComponent implements OnInit {
       data: {product: this.productInfo},
       disableClose: true
     });
+  }
 
-    
+  openDialogEdit(): void {
+    const dialogRef = this.dialog.open(EditProductDialogComponent, {
+      data: {product: this.productInfo}
+    });
+  }
+
+  openDialogDelete(): void {
+    const dialogRef = this.dialog.open(DeleteProductDialogComponent, {
+      data: {product: this.productInfo}
+    });
   }
 
   isOwner(): boolean {
-    return this.productInfo?.owner === localStorage.getItem('username') ? true : false;
+    return this.productInfo?.username === localStorage.getItem('username') ? true : false;
   }
 }

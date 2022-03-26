@@ -1,9 +1,9 @@
 <div class="parent">
-    <h4>
-        Category
-    </h4>
     <div [ngClass]="'checkboxes'">
+    <h4>Category</h4>
         <mat-checkbox #chBox (change)="toggleFilterCategory(chBox)" *ngFor="let category of categories" name="{{category}}">
         {{category}}</mat-checkbox>
     </div>
+    <br />
+    <button mat-raised-button class="buttons" color="primary" (click)="openDialog()">Add product</button>
 </div>

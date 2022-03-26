@@ -1,5 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { MatCheckbox } from '@angular/material/checkbox';
+import { MatDialog } from '@angular/material/dialog';
+import { CreateProductDialogComponent } from '../create-product-dialog/create-product-dialog.component';
 
 
 @Component({
@@ -14,7 +16,7 @@ export class SidenavComponent implements OnInit {
   @Output() selectedFilter: EventEmitter<string[]> = new EventEmitter<string[]>();
   
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
    
@@ -29,5 +31,9 @@ export class SidenavComponent implements OnInit {
                                                       : [...this.selectedFilters, filterText];
     console.log(this.selectedFilters)
     this.selectedFilter.emit(this.selectedFilters)
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(CreateProductDialogComponent);
   }
 }

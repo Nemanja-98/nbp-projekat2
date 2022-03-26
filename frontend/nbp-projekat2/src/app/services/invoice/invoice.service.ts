@@ -14,14 +14,19 @@ export class InvoiceService {
 
   constructor(private http: HttpClient) { }
 
-  postInvoice(invoice: Invoice, username: string): Observable<any>{
+  postInvoice(invoice: Invoice, username: string | null): Observable<any>{
 
     return this.http.post(this.url + "AddInvoice/" + username, invoice, {headers: environment.httpOptions.headers, responseType: "text"})
   }
 
-  getMyInvoices(username: string): Observable<Invoice[]>{
+  getMyInvoices(username: string | null): Observable<Invoice[]>{
 
     const urlGetMyInvoices = this.url + "GetInvoices/" + username;
     return this.http.get<Invoice[]>(urlGetMyInvoices, environment.httpOptions);
+  }
+
+  deleteInvoice(username: string | null, buyerName: string, productName: string): Observable<any>{
+    const urlDeleteInvoice = this.url + "DeleteInvoice/" + username + "/" + buyerName + "/" + productName;
+    return this.http.delete(urlDeleteInvoice, {headers: environment.httpOptions.headers, responseType: "text"})
   }
 }

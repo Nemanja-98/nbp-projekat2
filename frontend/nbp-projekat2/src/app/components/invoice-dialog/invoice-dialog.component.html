@@ -1,0 +1,9 @@
+<h2 mat-dialog-title>Check out for {{ data.invoice.productName }}</h2>
+<mat-dialog-content>
+    <p>By checking out this invoice you are confirming that you have accepted and sent the desired product to the customer!
+        Do you wish to procced?</p>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button cdkFocusInitial [ngClass]="'btnGreen'" (click)="deleteInovice()">Check out</button>
+</mat-dialog-actions>

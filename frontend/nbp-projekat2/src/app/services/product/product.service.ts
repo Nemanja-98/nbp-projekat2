@@ -35,4 +35,25 @@ export class ProductService {
     console.log(bodyUpdateProduct)
     return this.http.put<Product>(urlUpdateProduct, bodyUpdateProduct, environment.httpOptions);
   }
+
+  deleteProduct(product: Product): Observable<any> {
+    const urlDeleteProduct = this.url + "DeleteProduct/" + product.username + "/" + product.category + "/" + product.name;
+    return this.http.delete(urlDeleteProduct, {headers: environment.httpOptions.headers, responseType: "text"});
+  }
+
+  createProduct(product: Product): Observable<any> {
+    const urlCreateProduct = this.url + "AddProduct";
+
+    const bodyCreateProduct = {
+      "owner": product.username,
+      "product": {
+        "name": product.name,
+        "category": product.category,
+        "amount": product.amount,
+        "price": product.price
+      }
+    }
+
+    return this.http.post(urlCreateProduct, bodyCreateProduct, {headers: environment.httpOptions.headers, responseType: "text"})
+  }
 }
