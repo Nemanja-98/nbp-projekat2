@@ -1,6 +1,6 @@
 <div class="container">
     <button mat-button><a [routerLink]="['']">Products</a></button>
-    <button mat-button><a [routerLink]="['profile']">Profile</a></button>
-    <button mat-button><a>Login/Register</a></button>
-    <button mat-button><a>Log Out</a></button>
+    <button mat-button *ngIf="isLogedIn()"><a [routerLink]="['profile']">Profile</a></button>
+    <button mat-button *ngIf="!isLogedIn()"><a [routerLink]="['login']">Login/Register</a></button>
+    <button mat-button *ngIf="isLogedIn()"><a (click)="logout()">Log Out</a></button>
 </div>

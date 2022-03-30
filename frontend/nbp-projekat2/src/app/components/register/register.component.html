@@ -1,0 +1,20 @@
+<div class="container">
+    <div class="loginForm">
+        <mat-card>
+            <mat-card-title class="textCenter">Register</mat-card-title>
+        <mat-card-content>
+            <label class="displayBlock margins">Username: <input matInput type="text" [(ngModel)]="userForRegistry.username"></label>
+            <label class="displayBlock margins">Password: <input matInput type="password" [(ngModel)]="userForRegistry.password"></label>
+            <label class="displayBlock margins">Name: <input matInput type="password" [(ngModel)]="userForRegistry.name"></label>
+            <label class="displayBlock margins">Surname: <input matInput type="password" [(ngModel)]="userForRegistry.surname"></label>
+            <label class="displayBlock margins">Location: <input matInput type="password" [(ngModel)]="userForRegistry.location"></label>
+        </mat-card-content>
+        <mat-card-actions class="textCenter">
+            <button mat-raised-button color="primary" (click)="register()">Create account</button>
+        </mat-card-actions>
+        <mat-card-footer>
+            <a class="textCenter" [routerLink]="['/login']">Already have an account? Log in now!</a>
+        </mat-card-footer>
+        </mat-card>
+    </div>
+</div>

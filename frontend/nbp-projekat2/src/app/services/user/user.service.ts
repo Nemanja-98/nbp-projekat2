@@ -24,4 +24,9 @@ export class UserService {
     const urlUpdateUser = this.url + "UpdateUser";
     return this.http.put<User>(urlUpdateUser, user, environment.httpOptions);
   }
+
+  createNewUser(newUser: User): Observable<any> {
+    const urlNewUSer = this.url + "AddUser";
+    return this.http.post(urlNewUSer, newUser, {headers: environment.httpOptions.headers, responseType: "text"});
+  }
 }

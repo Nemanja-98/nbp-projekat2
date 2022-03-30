@@ -33,24 +33,34 @@
             update metodu u TS i service i da napravis dugme za Odustani -->
         </div>
         <div [ngClass] = "{'invoices': true, 'hide': showInvoices}">
-            <mat-card *ngFor="let invoice of myInvoices" class="margins">
-                <mat-card-title>Product: {{ invoice.productName }}</mat-card-title>
-                <mat-card-content class="vertical">
-                    <label>Buyer name: {{ invoice.buyerName }}</label>
-                    <label>Phone number: {{ invoice.phoneNumber }}</label>
-                    <label>Address: {{ invoice.address }}</label>
-                    <label>Amount: {{ invoice.amount }}</label>
-                    <label>Product price: {{ invoice.productPrice }} eur</label>
-                    <label>Total amount {{ invoice.amount * invoice.productPrice }} eur</label>
-                </mat-card-content>
-                <mat-card-actions>
-                    <button mat-raised-button color="primary" (click)="openDialog(invoice)">Check out</button>
-                </mat-card-actions>
-            </mat-card>
+            <div *ngIf="myInvoices.length !== 0" class="flexAndWrap">
+                <mat-card *ngFor="let invoice of myInvoices" class="margins">
+                    <mat-card-title>Product: {{ invoice.productName }}</mat-card-title>
+                    <mat-card-content class="vertical">
+                        <label>Buyer name: {{ invoice.buyerName }}</label>
+                        <label>Phone number: {{ invoice.phoneNumber }}</label>
+                        <label>Address: {{ invoice.address }}</label>
+                        <label>Amount: {{ invoice.amount }}</label>
+                        <label>Product price: {{ invoice.productPrice }} eur</label>
+                        <label>Total amount {{ invoice.amount * invoice.productPrice }} eur</label>
+                    </mat-card-content>
+                    <mat-card-actions>
+                        <button mat-raised-button color="primary" (click)="openDialog(invoice)">Check out</button>
+                    </mat-card-actions>
+                </mat-card>
+            </div>
+            <div *ngIf="myInvoices.length === 0">
+                <img src="../assets/noInvoices.jpg" >
+            </div>
         </div>
         <div [ngClass] = "{'prod': !showProducts,'hide': showProducts}">
-            <div *ngFor="let product of myProducts">
-                <app-product [productInfo]="product"></app-product>
+            <div *ngIf="myProducts.length !== 0" class="flexAndWrap">
+                <div *ngFor="let product of myProducts">
+                    <app-product [productInfo]="product"></app-product>
+                </div>
+            </div>
+            <div *ngIf="myProducts.length === 0">
+                <img src="../assets/noProducts.jpg">
             </div>
         </div>
     </div>

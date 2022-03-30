@@ -36,6 +36,10 @@ export class ProductComponent implements OnInit {
     });
   }
 
+  isLogedIn(): boolean {
+    return localStorage.getItem("username") ? true : false
+  }
+
   isOwner(): boolean {
     return this.productInfo?.username === localStorage.getItem('username') ? true : false;
   }

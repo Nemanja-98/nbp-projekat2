@@ -11,6 +11,8 @@ import { InvoiceDialogComponent } from './components/invoice-dialog/invoice-dial
 import { EditProductDialogComponent } from './components/edit-product-dialog/edit-product-dialog.component';
 import { DeleteProductDialogComponent } from './components/delete-product-dialog/delete-product-dialog.component';
 import { CreateProductDialogComponent } from './components/create-product-dialog/create-product-dialog.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
 
 //module imports
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -28,6 +30,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import {MatRadioModule} from '@angular/material/radio';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,6 +45,8 @@ import {MatRadioModule} from '@angular/material/radio';
     EditProductDialogComponent,
     DeleteProductDialogComponent,
     CreateProductDialogComponent,
+    LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,

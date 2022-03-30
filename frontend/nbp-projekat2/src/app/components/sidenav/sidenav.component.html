@@ -5,5 +5,5 @@
         {{category}}</mat-checkbox>
     </div>
     <br />
-    <button mat-raised-button class="buttons" color="primary" (click)="openDialog()">Add product</button>
+    <button *ngIf="isLogedIn()" mat-raised-button class="buttons" color="primary" (click)="openDialog()">Add product</button>
 </div>

@@ -1,0 +1,31 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    
+}
+
+.loginForm {
+    display: flex;
+    flex-direction: column;
+}
+
+.displayBlock {
+    display: block;
+}
+
+.margins {
+    margin: 10px;
+}
+
+.textCenter {
+    text-align: center;
+}
+
+mat-card-content {
+    display: flex; 
+    flex-direction: column;
+    align-items: flex-end;
+}

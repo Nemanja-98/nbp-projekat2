@@ -36,4 +36,8 @@ export class SidenavComponent implements OnInit {
   openDialog(): void {
     const dialogRef = this.dialog.open(CreateProductDialogComponent);
   }
+
+  isLogedIn(): boolean {
+    return localStorage.getItem("username") ? true : false
+  }
 }

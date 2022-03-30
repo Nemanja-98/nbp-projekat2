@@ -1,0 +1,17 @@
+<div class="container">
+    <div class="loginForm">
+        <mat-card>
+            <mat-card-title class="textCenter">Login</mat-card-title>
+        <mat-card-content>
+            <label class="displayBlock margins">Username: <input matInput type="text" [(ngModel)]="loginCredentials.username"></label>
+            <label class="displayBlock margins">Password: <input matInput type="password" [(ngModel)]="loginCredentials.password"></label>
+        </mat-card-content>
+        <mat-card-actions class="textCenter">
+            <button mat-raised-button color="primary" (click)="login()">Login</button>
+        </mat-card-actions>
+        <mat-card-footer>
+            <a class="textCenter" [routerLink]="['/register']">Don't have an account? Register now!</a>
+        </mat-card-footer>
+        </mat-card>
+    </div>
+</div>

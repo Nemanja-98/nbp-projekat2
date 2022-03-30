@@ -12,9 +12,9 @@
       </mat-card-content>
       <mat-card-actions>
         <div class="btns">
-          <button mat-raised-button color="primary" class="btnBuy" (click)="openDialog()">BUY</button>
-          <button mat-raised-button color="primary" class="btnEdit" (click)="openDialogEdit()">Edit</button>
-          <button mat-stroked-button color="warn" (click)="openDialogDelete()">Delete</button>
+          <button *ngIf="!isOwner()" mat-raised-button color="primary" class="btnBuy" (click)="openDialog()">BUY</button>
+          <button *ngIf="isLogedIn() && isOwner()" mat-raised-button color="primary" class="btnEdit" (click)="openDialogEdit()">Edit</button>
+          <button *ngIf="isLogedIn() && isOwner()" mat-stroked-button color="warn" (click)="openDialogDelete()">Delete</button>
         </div>
       </mat-card-actions>
     </mat-card>
